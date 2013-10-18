@@ -1,0 +1,14 @@
+<div ng-repeat="text in textLog">
+    <span class="consoleText">{{text}}</span>
+</div>
+<div>
+    <table>
+        <tr>
+            <td>{{inputPromptText}}</td>
+            <td>
+                <span class="consoleText">{{inputText}}</span>
+                <span class="blink consoleText" ng-class="{ consoleCursor: !!inputText.length}">&nbsp;</span>
+            </td>
+        </tr>
+    </table>
+</div>
