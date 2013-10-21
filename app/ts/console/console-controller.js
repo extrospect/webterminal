@@ -34,6 +34,7 @@ define(["require", "exports", 'console/key-command'], function(require, exports,
                             _this.$scope.inputText = _this.$scope.inputText.slice(0, -1);
                             break;
                         case keyCommandEnum.KeyCommand.Submit:
+                            execCommand();
                             break;
                         case keyCommandEnum.KeyCommand.HistoryBack:
                             _this.inputTextHistoryLoop(-1);
@@ -44,19 +45,18 @@ define(["require", "exports", 'console/key-command'], function(require, exports,
                     }
                 });
             });
-            /*
-            this.$scope.execCommand = () => {
-            var command = <string>this.$scope.inputText;
-            this.$scope.commandLog.push(command);
-            this.$scope.textLog.push(this.inputPromptText + command);
-            
-            this.$scope.inputText = '';
-            this.$scope.commandHistoryIndex = -1;
-            
-            command = command.trim();
-            //this.getCommandAction(command)();
+
+            var execCommand = function () {
+                var command = _this.$scope.inputText;
+                _this.$scope.commandLog.push(command);
+                _this.$scope.textLog.push(_this.defaultInputPrompt + command);
+
+                _this.$scope.inputText = '';
+                _this.$scope.commandHistoryIndex = -1;
+
+                command = command.trim();
+                //this.getCommandAction(command)();
             };
-            */
             /*
             (<any>consoleService.addListener)(function(text) {
             (<any>this).$scope.$apply(() => {

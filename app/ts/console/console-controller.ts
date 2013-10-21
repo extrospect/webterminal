@@ -35,6 +35,7 @@ export class ConsoleController {
                         this.$scope.inputText = this.$scope.inputText.slice(0, -1);
                         break;
                     case keyCommandEnum.KeyCommand.Submit:
+                        execCommand();
                         break;
                     case keyCommandEnum.KeyCommand.HistoryBack:
                         this.inputTextHistoryLoop(-1);
@@ -45,11 +46,11 @@ export class ConsoleController {
                 }
             });
         });
-/*
-        this.$scope.execCommand = () => {
+
+        var execCommand = () => {
             var command = <string>this.$scope.inputText;
             this.$scope.commandLog.push(command);
-            this.$scope.textLog.push(this.inputPromptText + command);
+            this.$scope.textLog.push(this.defaultInputPrompt + command);
 
             this.$scope.inputText = '';
             this.$scope.commandHistoryIndex = -1;
@@ -57,7 +58,7 @@ export class ConsoleController {
             command = command.trim();
             //this.getCommandAction(command)();
         };
-*//*
+/*
         (<any>consoleService.addListener)(function(text) {
             (<any>this).$scope.$apply(() => {
                 (<any>this).$scope.textLog.push(text);
